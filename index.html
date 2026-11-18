@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>园林史 · 世界时间轴 | 苏科大 344</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+  <!-- 顶栏 -->
+  <header id="top">
+    <div class="brand">
+      <span class="mark">園</span>
+      <div class="ttl">
+        <b>园林史 · 世界时间轴</b>
+        <small>中国古典园林史 × 西方园林史 · 苏科大 344</small>
+      </div>
+    </div>
+    <div class="tools">
+      <button id="btnSearch" class="ico" title="搜索（/）">⌕</button>
+      <button id="btnQuick" class="ico" title="工程速查">工</button>
+      <button id="btnAbout" class="ico" title="说明">?</button>
+    </div>
+  </header>
+
+  <!-- 地图舞台 -->
+  <main id="stage">
+    <canvas id="map"></canvas>
+    <canvas id="fx"></canvas>
+    <div id="pins"></div>
+
+    <!-- 年代刻度 -->
+    <div id="scale">
+      <div id="scaleTrack"></div>
+      <div id="scaleLabels"></div>
+    </div>
+
+    <!-- 时代条 -->
+    <div id="eraBar"></div>
+
+    <!-- 当前时代牌 -->
+    <div id="eraPlate"><div class="ep-cn"></div><div class="ep-we"></div></div>
+
+  </main>
+
+  <!-- 右侧年代轨 -->
+  <aside id="rail">
+    <div class="railHead">
+      <span>年代轨</span>
+      <div class="railBtns">
+        <button data-focus="all" class="on">全球</button>
+        <button data-focus="cn">中国</button>
+        <button data-focus="we">西方</button>
+      </div>
+    </div>
+    <div class="railCols"><span>中国</span><span>西方</span></div>
+    <div id="railScroll">
+      <div id="railInner"></div>
+    </div>
+    <div id="railCursor"></div>
+  </aside>
+
+  <!-- 底部时间控制 -->
+  <footer id="timebar">
+    <button id="btnPlay" class="play" title="播放（空格）">▶</button>
+    <div class="sliderWrap">
+      <input id="slider" type="range" min="0" max="1000" value="0">
+      <div id="ticks"></div>
+    </div>
+    <div id="yearOut">
+      <b id="yearNow">—</b>
+      <small id="yearCn"></small>
+    </div>
+  </footer>
+
+  <!-- 详情面板 -->
+  <aside id="panel" class="hidden">
+    <button id="panelClose" class="x">×</button>
+    <div id="panelBody"></div>
+  </aside>
+
+  <!-- 搜索 -->
+  <div id="searchBox" class="hidden">
+    <input id="searchInput" placeholder="搜园林 / 人物 / 年代 / 考点…" autocomplete="off">
+    <div id="searchResults"></div>
+  </div>
+
+  <!-- 速查 -->
+  <aside id="quickPanel" class="hidden">
+    <button id="quickClose" class="x">×</button>
+    <h2>工程 · 绿地 · 植物 速查</h2>
+    <div id="quickTabs"></div>
+    <div id="quickBody"></div>
+  </aside>
+
+  <!-- 说明 -->
+  <div id="about" class="hidden">
+    <div class="aboutCard">
+      <button id="aboutClose" class="x">×</button>
+      <h2>怎么看这个时间轴</h2>
+      <ol>
+        <li><b>拖底部滑杆</b>（或按空格播放），时间从公元前 3000 年走到 2000 年，地图上的点会按年代浮现。</li>
+        <li><b>点地图上的点</b>看这座园子/这本书：年代、位置、要点，以及它在真题里怎么考。</li>
+        <li><b>点卡片里的题目</b>展开完整答案（名词 65 条、简答 61 条、论述 26 条、绘图 27 条）。</li>
+        <li><b>中国在西、西方在东？</b>不。左边（东亚）是中国，右边（地中海—西欧）是西方。同一水平高度＝同一时代，可以直接对照。</li>
+        <li><b>虚线弧</b>是传播流：佛教东传、中国园林西传、日本吸收。</li>
+      </ol>
+      <p class="src">数据来源：《中国古典园林史》周维权第3版、《西方园林史》朱建宁第3版，以及 2012—2025 年苏科大 344 真题答案汇总。平面图裁自教材扫描页。</p>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
